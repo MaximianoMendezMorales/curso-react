@@ -8,20 +8,21 @@ const actualizarContadores = () => {
     document.getElementById('contador-pares').innerText = numerosPar.length
 }
 
-const agregarNumeroLista = (valor) => {
-    const li = document.createElement('li')
-    li.textContent = valor    
-    document.getElementById('lista').appendChild(li)
-
+const agregarNumeroLista = (numero) => {
+    document.getElementById('lista').insertAdjacentHTML('afterend', `<li>${numero}</li>`)
     actualizarContadores()
 }
 
 const agregarNumero = () => {
-    const number = parseInt(inputNumber.value)
+    const numero = parseInt(inputNumber.value);
 
-    (number % 2 === 0) ? numerosPar.push(number) : numerosImpar.push(number)
-        
-    agregarNumeroLista(number)
+    if (numero % 2 === 0) {
+        numerosPar.push(numero)
+    } else {
+        numerosImpar.push(numero)
+    }
+
+    agregarNumeroLista(numero)
 }
 
 document.addEventListener('DOMContentLoaded', () => {
