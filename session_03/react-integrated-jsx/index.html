@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React App JSX</title>
+</head>
+<body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@18.2.0/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js" defer></script>
+    <script type="text/babel">
+        const root = ReactDOM.createRoot(document.getElementById('root'))
+
+        const options = []
+
+        const changeEstatus = (option) => {
+            option.completed = !option.completed
+
+            root.render(<App />)
+        }
+
+        const addOption = () => {
+            const text = document.getElementById('input-option').value
+            options.push({
+                completed: false,
+                text: text
+            });
+
+            root.render(<App />)
+        }
+
+        const deleteOption = (option) => {
+            const index = options.indexOf(option)
+            options.splice(index, 1);
+
+            root.render(<App />)
+        }
+
+        const ListOption = ({ option }) => {
+            return (
+                <li>
+                    <input type="checkbox" checked={option.completed} onChange={() => changeEstatus(option)} />
+                    <span>{option.text}</span>
+                    <button type="button" onClick={() => deleteOption(option)}>x</button>
+                </li>
+            )
+        }
+
+        const List = ({ options }) => {
+            return (
+                <ul>
+                    {options.map((opt, index) => (
+                        <ListOption option={opt} key={index} />
+                    ))}
+                </ul>
+            )
+        }
+
+        const Form = () => {
+            return (
+                <div>
+                    <input type="text" id="input-option" placeholder="Nueva Opción" />
+                    <button type="button" onClick={addOption}>Agregar</button>
+                </div>
+            )
+        }
+
+        const App = () => {
+            return (
+                <>
+                    <h1>Mi primera pagina con ReactJS (JSX)</h1>
+                    <Form />
+                    <List options={options} />
+                </>
+            )
+        }
+
+        root.render(<App />)
+    </script>
+</body>
+</html>
