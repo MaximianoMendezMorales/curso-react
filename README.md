@@ -1,5 +1,5 @@
 # **Desarrollo Web con React JS**
-Listado de ejercicios echos en el curso "Desarrollo Web con React JS" en IECA-2023.
+Listado de ejercicios hechos en el curso "Desarrollo Web con React JS" en IECA-2023.
 
 ## Temario (Sesiones)
 1. **14/10**: Fundamentos del desarollo web ✅
