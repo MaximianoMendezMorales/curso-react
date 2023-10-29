@@ -1,8 +1,62 @@
+// HOF (Funciones de alto orden)
+const invokeIf = (condition, fnTrue, fnFalse) => {
+    condition 
+        ? fnTrue()
+        : fnFalse()
+}
+
+const success = () => console.log('OK');
+const fail = () => console.log('NG')
+
+const is2023 = new Date().getFullYear() === 2022
+
+invokeIf(is2023, success, fail)
+
+// EJE 13: Reduce
+// EJE 12: MAP
+
+// EJE 11: Filter
+// const users = ['Juan', 'Max', 'manuel', 'Pedro']
+
+// const userStartsWithM = users.filter(u => u.toUpperCase().startsWith('M'));
+// console.log(userStartsWithM);
+
+// find, findIndex, 
+
+// OTROS TEMAS
+// - Clases y objetcos
+// - Inmutabilidad
+// - Funciones puras e impuraas
+
+// EJE 10: ASYNC/AWAIT
+// const getQuote = async () => {
+//     try {
+//         const response = await fetch('https://randomuser.me/api/', {
+//             headers: {
+//                 'X-Requested-With': 'XMLHttpRequest'
+//             }
+//         });
+
+//         const data = await response.json() 
+//         const results = data.results
+    
+//         document.getElementById('user').innerText = `Mails Found: ${results[0].email}`   
+//     } catch (e) {
+//         console.log(e);
+//     }
+// }
+
+// getQuote();
+
 // EJE 9: PROMESAS
-fetch('https://httpbin.org/get', { method: 'GET' }).then(response => response.json())
-.then(data => {
-    console.log(data);
-})
+// fetch('https://randomuser.me/api/', { method: 'GET' })
+//     .then(response => response.json())
+//     .then((data) => {
+//         document.querySelector('#user').innerText = data.results[0].email
+//     })
+//     .catch(error => {
+//         console.log(error);
+//     })
 
 
 // EJE 8: DESTRUCTURACION ANIDADA
