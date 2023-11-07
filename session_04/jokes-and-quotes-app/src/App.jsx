@@ -56,8 +56,8 @@ function App() {
             <h1 style={{fontWeight: 'bolder'}}>Jokes & Quotes</h1>
 
             <div className="card">
-                <button type="button" className="btn" onClick={() => getJoke()}>Get Joke</button>
-                <button type="button" className="btn" onClick={() => getQuote()}>Get Quote</button>
+                <button type="button" className="btn" onClick={() => getJoke()} disabled={loading}>Get Joke</button>
+                <button type="button" className="btn" onClick={() => getQuote()} disabled={loading}>Get Quote</button>
             </div>
 
             <hr/>
