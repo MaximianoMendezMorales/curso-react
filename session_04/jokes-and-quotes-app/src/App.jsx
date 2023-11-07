@@ -13,6 +13,8 @@ function App() {
     const getJoke = async () => {
         setType('joke')
         setLoading(true)
+        setError('')
+        setPhrase('')
         try {
             const response = await fetch("https://icanhazdadjoke.com/", {headers: {'Accept': 'application/json'}});
             const data = await response.json();
@@ -31,6 +33,8 @@ function App() {
     const getQuote = async () => {
         setType('quote')
         setLoading(true)
+        setError('')
+        setPhrase('')
         try {
             const response = await fetch('https://quote-garden.onrender.com/api/v3/quotes/random')
             const data = await response.json();
@@ -44,29 +48,31 @@ function App() {
     }
 
     useEffect(() => {
-        getJoke()
+        (async () => await getJoke())();
     }, []);
 
     return (
         <React.Fragment>
+            <h1 style={{fontWeight: 'bolder'}}>Jokes & Quotes</h1>
+
             <div className="card">
                 <button type="button" className="btn" onClick={() => getJoke()}>Get Joke</button>
                 <button type="button" className="btn" onClick={() => getQuote()}>Get Quote</button>
             </div>
 
-            <h4>{'New ' + type.toString().toLocaleUpperCase()}</h4>
-
             <hr/>
 
+            {loading
+                ? (<h4 className="loading">Loading...</h4>)
+                : (<h4 className="title">The {type} is...</h4>)
+            }
+
             <div style={{width: '700px'}}>
-                {loading
-                    ? (<span className="loading">Loading...</span>)
-                    : (<textarea className="phraase" readOnly={true} rows={10}>{phrase}</textarea>)
-                }
+                <textarea className="phrase" readOnly={true} value={(loading ? ('...') : phrase)} disabled={loading} />
 
                 {error 
                     ? (<span className='error'>{error}</span>)
-                    : ('')
+                    : null
                 }
             </div>
 
