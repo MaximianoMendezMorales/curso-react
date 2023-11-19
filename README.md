@@ -7,6 +7,6 @@ Listado de ejercicios hechos en el curso "Desarrollo Web con React JS" en IECA-2
 3. **28/10**: Aplicaciones con React ✅
 4. **04/11**: Hooks y navegabilidad ✅
 5. **11/11**: Consumo de Web APIS y Estado ✅
-6. **18/11**: Herramientas en la nube
+6. **18/11**: Herramientas en la nube ✅
 7. **25/11**: ---
 8. **02/12**: ---
