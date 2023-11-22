@@ -24,7 +24,7 @@ const AddProduct = ({ product }) => {
                 productExistsInCart()
                     ? (<RemoveProduct product={product}/>)
                     : (
-                        <button type="button" onClick={() => handleAddToCart()}>
+                        <button type="button" className="text-amber-600" onClick={() => handleAddToCart()}>
                             Add to Cart
                         </button>
                     )
