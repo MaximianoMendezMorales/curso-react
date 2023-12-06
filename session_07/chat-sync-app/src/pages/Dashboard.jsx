@@ -59,6 +59,16 @@ const Dashboard = () => {
         return colors[randomIndex];
     }
 
+    const MessageInput = () => {
+        return (
+            <>
+                <input type="text" name="message-input" id="message-input" placeholder="Type a message..."
+                    onKeyDown={onSendMessageEnter}
+                />
+            </>
+        )
+    }
+
     return (
         <AppLayout>
             <div className="px-52 flex max-h-fit">
@@ -78,9 +88,16 @@ const Dashboard = () => {
                 <div className="w-2/3 bg-gray-600 border-2 border-gray-400 rounded max-h-fit">
                     <div className="">
                         <div className="flex flex-col mb-4 w-full p-5">
-                            <div>
-                                <h1 className="text-white">{ channel?.topic }</h1>
-                            </div>
+                            {
+                                channel
+                                    ? (
+                                        <div className="my-3">
+                                            <h1 className="text-white">{ channel?.topic }</h1>
+                                            <hr className="bg-white"/>
+                                        </div>
+                                    )
+                                    : null
+                            }
                             {messages.map((message, index) => (
                                 <div key={index} className={`mb-2 ${message.author.uid === user.uid ? 'text-right' : 'text-left'}`}>
                                     <p className="text-sm">
@@ -96,25 +113,16 @@ const Dashboard = () => {
                                               </span>
                                 </div>
                             ))}
+
+                            {
+                                channel
+                                    ? (<MessageInput/>)
+                                    : null
+                            }
                         </div>
                     </div>
                 </div>
             </div>
-            {/*<div className="flex h-screen bg-gray-500">*/}
-            {/*    <div className="m-auto">*/}
-            {/*        <div className="bg-gray-600 text-gray-50 rounded-lg p-4 shadow-sm" style={{width: '900px'}}>*/}
-            {/*            <div className="flex">*/}
-            {/*                <div className="w-1/3">*/}
-
-            {/*                </div>*/}
-            {/*                <div className="w-2/3 bg-gray-600 border-white">*/}
-
-
-            {/*                </div>*/}
-            {/*            </div>*/}
-            {/*        </div>*/}
-            {/*    </div>*/}
-            {/*</div>*/}
         </AppLayout>
     )
 }

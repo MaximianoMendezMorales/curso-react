@@ -9,7 +9,7 @@ export const useProducts = () => {
     const getProducts = async () => {
         setLoading(true)
         try {
-            const { data } = await apiStore.get('/products')
+            const { data } = await apiStore.get('/products?sort=asc')
             setProducts(data)
         } catch (e) {
             console.log(e)

@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useProducts } from "../../hooks/fakestore/useProducts.js";
+import { useProducts } from "../../hooks/firestore/useProducts.js";
 import { useEffect } from "react";
 import AddProduct from "../../components/Cart/AddProduct.jsx";
 
@@ -11,27 +11,24 @@ const ProductDetail = () => {
         (async () => await getProductById(id))();
     }, [ id ]);
 
+    const Product = () => {
+        return (
+            <>
+                <pre>{JSON.stringify(product, null, 2)}</pre>
+                <div className="flex">
+                    <AddProduct product={product}/>
+                </div>
+            </>
+        )
+    }
+
     return (
         <>
-            {
-                loading
-                    ? ('loading...')
-                    : (
-                        <div>
-
-                        </div>
-                    )
-            }
             <p>Product Detail: {id}</p>
-            <pre>{JSON.stringify(product, null, 2)}</pre>
             {
                 loading
-                    ? null
-                    : (
-                        <div className="flex">
-                            <AddProduct product={product}/>
-                        </div>
-                    )
+                    ? ('log')
+                    : (<Product/>)
             }
         </>
     )
